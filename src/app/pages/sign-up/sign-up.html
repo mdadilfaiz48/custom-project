@@ -1,0 +1,131 @@
+<div class="signup-wrapper d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row shadow-lg rounded-4 overflow-hidden">
+      <!-- LEFT PANEL -->
+      <div
+        class="col-lg-6 d-none d-lg-flex flex-column justify-content-center text-white p-5 left-panel"
+      >
+        <h1 class="fw-bold">Create Account 🚀</h1>
+        <p class="lead">Join us to explore amazing electronics deals and offers.</p>
+      </div>
+
+      <!-- RIGHT SIDE FORM -->
+      <div class="col-lg-6 bg-white p-5">
+        <h3 class="fw-bold text-center mb-4">Sign Up</h3>
+
+        <!-- FORM -->
+        <form [formGroup]="emailValidation" (ngSubmit)="onSubmit()">
+          <!-- USERNAME -->
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control form-input"
+              placeholder="Full Name"
+              name="username"
+              formControlName="username"
+              required
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                emailValidation.get('username')?.touched && emailValidation.get('username')?.invalid
+              "
+            >
+              <span *ngIf="emailValidation.get('password')?.errors?.['required']">
+                name is required
+              </span>
+            </small>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control form-input"
+              placeholder="Email Address"
+              formControlName="email"
+              required
+            />
+
+            <small
+              class="text-danger"
+              *ngIf="emailValidation.get('email')?.touched && emailValidation.get('email')?.invalid"
+            >
+              <span *ngIf="emailValidation.get('email')?.errors?.['required']">
+                Email is required
+              </span>
+
+              <span *ngIf="emailValidation.get('email')?.errors?.['email']">
+                Enter a valid email
+              </span>
+            </small>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control form-input"
+              placeholder="Password"
+              name="password"
+              formControlName="password"
+              required
+            />
+
+            <small
+              class="text-danger"
+              *ngIf="
+                emailValidation.get('password')?.touched && emailValidation.get('password')?.invalid
+              "
+            >
+              <span *ngIf="emailValidation.get('password')?.errors?.['required']">
+                password is required
+              </span>
+            </small>
+          </div>
+
+          <!-- OTP SECTION (shown after API call if needed) -->
+          <div *ngIf="showOtp" class="d-flex justify-content-between mb-4">
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-input"
+              #otp1
+              (keyup)="handleOtp($event, null, otp2)"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-input"
+              #otp2
+              (keyup)="handleOtp($event, otp1, otp3)"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-input"
+              #otp3
+              (keyup)="handleOtp($event, otp2, otp4)"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control otp-input"
+              #otp4
+              (keyup)="handleOtp($event, otp3, null)"
+            />
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button
+            type="submit"
+            class="btn btn-warning w-100 fw-bold py-2"
+            [disabled]="emailValidation.invalid"
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

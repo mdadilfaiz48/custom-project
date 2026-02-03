@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <img src="./plug.png" class="img-fluid" width="40" alt="Plug" />
+    <div class="input-group ms-auto w-25">
+      <input class="form-control" placeholder="Search" />
+      <span class="input-group-text"> 🔍 </span>
+    </div>
+
+    <ul class="navbar-nav ms-auto align-items-center">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="nav-link" routerLinkActive="active" routerLink="/contact">Contact</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="productDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Product
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item text-dark" routerLink="product/laptop">Laptop</a></li>
+          <li><a class="dropdown-item text-dark" routerLink="product/mobile">Mobile</a></li>
+          <li><a class="dropdown-item text-dark" routerLink="product/car">Car</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/about">About</a>
+      </li>
+
+      <!-- Profile Icon -->
+    </ul>
+    <div class="dropdown">
+      <a
+        class="d-flex align-items-center text-decoration-none dropdown-toggle"
+        href="#"
+        id="profileDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="./circle-user-solid-full.svg"
+          alt="profile"
+          class="rounded-circle me-2"
+          width="40"
+          height="40"
+        />
+        <!-- <span class="fw-semibold text-dark">Adil</span> -->
+      </a>
+
+      <ul class="dropdown-menu dropdown-menu-end shadow">
+        <li>
+          <a class="dropdown-item text-dark" href="#"> 👤 Profile </a>
+        </li>
+        <li>
+          <a class="dropdown-item text-dark" href="#"> ⚙️ Settings </a>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a class="dropdown-item text-danger" routerLink="/login"> 🚪 Logout </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,98 @@
+<section class="vh-100 d-flex align-items-center justify-content-center">
+  <div class="container py-5">
+    <div class="row g-0 login-wrapper shadow-lg overflow-hidden">
+      <div class="col-lg-6 d-none d-lg-block visual-pane position-relative">
+        <div class="overlay-text p-5">
+          <h1 class="display-4 fw-bold text-white">Buy Electronics <br />Goods.</h1>
+          <p class="text-white-50 mt-3 fs-4">Find thousand of electronics items on this platform</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 bg-white p-5 d-flex flex-column justify-content-center">
+        <div class="form-header mb-4">
+          <h2 class="fw-bold text-dark">Welcome Back</h2>
+          <p class="text-muted">Please enter your details to sign in.</p>
+        </div>
+
+        <form [formGroup]="userValidation" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-uppercase">Email Address</label>
+            <input
+              type="email"
+              class="form-control login-input"
+              placeholder="name@company.com"
+              formControlName="email"
+              required
+            />
+            <small
+              class="text-danger"
+              *ngIf="userValidation.get('email')?.touched && userValidation.get('email')?.invalid"
+            >
+              <span *ngIf="userValidation.get('email')?.errors?.['required']">
+                Email is required
+              </span>
+
+              <span *ngIf="userValidation.get('email')?.errors?.['email']">
+                Enter a valid email
+              </span>
+            </small>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <label class="form-label small fw-semibold text-uppercase">Password</label>
+              <a href="#" class="text-decoration-none small text-primary">Forgot?</a>
+            </div>
+            <input
+              type="password"
+              class="form-control login-input"
+              placeholder="••••••••"
+              formControlName="password"
+              required
+            />
+
+            <small
+              class="text-danger"
+              *ngIf="
+                userValidation.get('password')?.touched && userValidation.get('password')?.invalid
+              "
+            >
+              <span *ngIf="userValidation.get('password')?.errors?.['required']">
+                password is required
+              </span>
+            </small>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="remember" />
+            <label class="form-check-label small text-muted" for="remember"
+              >Keep me logged in</label
+            >
+          </div>
+
+          <button
+            class="btn btn-dark w-100 py-3 mb-3 fw-bold rounded-3"
+            [disabled]="userValidation.invalid"
+          >
+            Sign In
+          </button>
+
+          <button
+            class="btn btn-outline-secondary w-100 py-2 d-flex align-items-center justify-content-center gap-2 rounded-3 border-light-subtle"
+          >
+            <img src="https://img.icons8.com/color/24/google-logo.png" alt="Google" />
+            <span class="small fw-semibold">Sign in with Google</span>
+          </button>
+        </form>
+
+        <div class="mt-5 text-center">
+          <p class="small text-muted">
+            Don't have an account?
+            <a routerLink="/signUp" class="text-primary fw-bold text-decoration-none"
+              >Sign up for free</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

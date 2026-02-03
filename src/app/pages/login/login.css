@@ -1,0 +1,54 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.login-wrapper {
+  border-radius: 24px;
+  min-height: 600px;
+}
+
+/* Left Pane Styling */
+.visual-pane {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Creating a soft glow effect on the left */
+.visual-pane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 10%;
+  z-index: 2;
+}
+
+/* Form Styling */
+.login-input {
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background-color: #fff;
+}
+
+.btn-dark {
+  background-color: #1e1e1e;
+  transition: transform 0.2s;
+}
+
+.btn-dark:hover {
+  transform: translateY(-2px);
+  background-color: #000;
+}

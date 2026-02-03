@@ -1,0 +1,47 @@
+/* Background styling */
+.signup-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+.left-panel {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.form-input {
+  height: 48px;
+  border-radius: 10px;
+}
+
+.otp-input {
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  transition: 0.3s;
+}
+
+.otp-input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+}
+
+button {
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.form-input {
+  height: 55px; /* Increase box height */
+  font-size: 16px; /* Better text size */
+  border-radius: 10px; /* Modern rounded look */
+  padding-left: 15px; /* Space inside */
+}
+.form-button {
+  height: 60px; /* Increase box height */
+  font-size: 16px; /* Better text size */
+  border-radius: 10px; /* Modern rounded look */
+  padding-left: 15px;
+}

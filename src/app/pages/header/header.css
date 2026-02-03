@@ -1,0 +1,48 @@
+.navbar-nav .nav-item {
+  margin-right: 50px !important;
+}
+.me-custom {
+  margin-right: 150px !important;
+}
+.me-5rem {
+  margin-right: 9rem;
+}
+
+ul li a {
+  color: white;
+  font-size: 20px;
+}
+
+ul li a:hover {
+  border-radius: 2px;
+}
+
+ul li a {
+  padding: 8px 15px;
+  transition: 0.3s;
+}
+
+ul li a:hover {
+  background-color: #08b5ff; /* Bootstrap primary */
+  color: white;
+  border-radius: 6px;
+}
+img {
+  filter: invert(1);
+}
+
+.dropdown-menu {
+  border-radius: 12px;
+  min-width: 200px;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  font-size: 14px;
+}
+.dropdown-item a {
+  color: rgb(14, 13, 13);
+}
+.dropdown-item:hover {
+  background-color: #121216;
+}
