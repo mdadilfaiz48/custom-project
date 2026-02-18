@@ -1,0 +1,38 @@
+<div class="signup-wrapper d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row shadow-lg rounded-4 overflow-hidden">
+      <!-- LEFT PANEL -->
+      <div
+        class="col-lg-6 d-none d-lg-flex flex-column justify-content-center text-white p-5 left-panel"
+      >
+        <h1 class="fw-bold">Create Account 🚀</h1>
+        <p class="lead">Join us to explore amazing electronics deals and offers.</p>
+      </div>
+
+      <!-- RIGHT SIDE FORM -->
+      <div class="col-lg-6 bg-white p-5">
+        <h3 class="fw-bold text-center mb-4">Sign Up</h3>
+
+        <!-- FORM -->
+        <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+          <!-- OTP SECTION (shown after API call if needed) -->
+          <div class="d-flex justify-content-between mb-4">
+            <input maxlength="1" formControlName="d1" (keyup)="moveFocus($event, 1)" />
+            <input maxlength="1" formControlName="d2" (keyup)="moveFocus($event, 2)" />
+            <input maxlength="1" formControlName="d3" (keyup)="moveFocus($event, 3)" />
+            <input maxlength="1" formControlName="d4" (keyup)="moveFocus($event, 4)" />
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button
+            type="submit"
+            class="btn btn-warning w-100 fw-bold py-2"
+            [disabled]="otpForm.invalid"
+          >
+            Verify
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

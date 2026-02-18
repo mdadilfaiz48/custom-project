@@ -2,6 +2,10 @@ export interface IUserRegisterRequest {
   username: string;
   email: string;
   password: string;
+  browserName: string;
+  ipAddress: string;
+  deviceType: string;
+  location: string;
 }
 
 export interface IUserProfileResponse {
@@ -22,4 +26,6 @@ export interface IIsUerVerifyRequest {
 
 export interface IIsUserVerifyResponse {
   message: string;
+  expireTime: number;
+  jwtToken: string;
 }

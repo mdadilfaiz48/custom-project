@@ -4,6 +4,9 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UsersService } from '../../services/users-service';
 import { NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
+import { subscribe } from 'node:diagnostics_channel';
+import { IIsUserVerifyResponse } from '../../interfaces/iuser-register-request';
+import { IIsUerVerifyRequest } from '../../interfaces/iuser-register-request';
 
 @Component({
   selector: 'app-login',
@@ -27,29 +30,26 @@ export class Login {
   ) {}
 
   onSubmit() {
-    console.log(this.userValidation.value.email);
-    console.log(this.userValidation.value.password);
+    const email = this.userValidation.controls.email.value!;
+    const password = this.userValidation.controls.password.value!;
 
-    this.userService
-      .isVerifyUser(this.userValidation.value.email!, this.userValidation.value.password!)
-      .subscribe({
-        next: (response: any) => {
-          console.log('Backend Response:', response);
+    this.userService.isVerifyUser(email, password).subscribe({
+      next: (response: IIsUserVerifyResponse) => {
+        if (response.message === 'Login successful') {
+          alert('login successful');
+          // Store JWT
+          sessionStorage.setItem('token', response.jwtToken);
 
-          // Suppose backend sends { message: "Login Success" }
-          if (response.message === 'Login Success') {
-            alert('Login successful!');
-            this.router.navigate(['/home']); // 👈 change route as needed
-          } else {
-            alert(response.message || 'Invalid credentials');
-          }
-        },
-        error: (error) => {
-          console.error('Error:', error);
-          alert('Server error. Try again.');
-        },
-      });
-    {
-    }
+          // Redirect to Home page
+          this.router.navigate(['/home']);
+        } else {
+          alert(response.message || 'Invalid credentials');
+        }
+      },
+      error: (error) => {
+        console.error('Login error', error);
+        alert('Server error. Try again.');
+      },
+    });
   }
 }

@@ -10,6 +10,8 @@ import { Laptop } from './pages/product/laptop/laptop';
 import { Car } from './pages/car/car';
 import { authGuard } from './auth-guard';
 import { AddCart } from './pages/add-cart/add-cart';
+import { Otp } from './pages/otp/otp';
+import { Inquire } from './pages/contact/inquire/inquire';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,8 +20,14 @@ export const routes: Routes = [
 
   { path: 'login', component: Login },
   { path: 'signUp', component: SignUp },
+  { path: 'otp', component: Otp },
 
-  { path: 'contact', component: Contact, canActivate: [authGuard] },
+  {
+    path: 'contact',
+    component: Contact,
+    canActivate: [authGuard],
+    children: [{ path: 'inquire', component: Inquire }],
+  },
   { path: 'about', component: About, canActivate: [authGuard] },
 
   {

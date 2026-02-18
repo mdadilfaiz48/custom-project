@@ -1,0 +1,83 @@
+/* Full page background */
+.signup-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+/* Card shadow and smooth look */
+.row {
+  background: #ffffff;
+}
+
+/* LEFT PANEL STYLING */
+.left-panel {
+  background: linear-gradient(135deg, #ff9a00, #ff6a00);
+  text-align: left;
+}
+
+.left-panel h1 {
+  font-size: 2.5rem;
+}
+
+.left-panel p {
+  opacity: 0.9;
+}
+
+/* RIGHT FORM SIDE */
+.col-lg-6.bg-white {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* OTP INPUT STYLES */
+input[formControlName] {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Spacing between OTP boxes */
+.d-flex.justify-content-between input {
+  margin: 0 6px;
+}
+
+/* Focus effect */
+input[formControlName]:focus {
+  border-color: #ff9a00;
+  box-shadow: 0 0 8px rgba(255, 154, 0, 0.4);
+  outline: none;
+}
+
+/* Disabled button style */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button hover effect */
+.btn-warning {
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .left-panel {
+    display: none !important;
+  }
+
+  input[formControlName] {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}

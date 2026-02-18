@@ -1,24 +1,37 @@
-import { inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
+  const platformId = inject(PLATFORM_ID);
 
-  // ✅ 1. FIRST check browser
-  if (typeof window === 'undefined') {
+  // ✅ Check if running in browser
+  if (!isPlatformBrowser(platformId)) {
     return false;
   }
 
-  // ✅ 2. THEN safely access sessionStorage
-  const loggedIn = window.sessionStorage.getItem('isLoggedIn');
+  const token = sessionStorage.getItem('token');
 
-  console.log('LoggedIn:', loggedIn);
-
-  // ✅ 3. Allow only if true
-  if (loggedIn !== 'true') {
-    router.navigate(['login']);
+  if (!token) {
+    router.navigate(['/login']);
     return false;
   }
 
-  return true;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const expiry = payload.exp * 1000;
+
+    if (Date.now() > expiry) {
+      sessionStorage.clear();
+      router.navigate(['/login']);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    sessionStorage.clear();
+    router.navigate(['/login']);
+    return false;
+  }
 };
