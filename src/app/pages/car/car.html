@@ -1,0 +1,31 @@
+<div class="shop-container">
+  <header class="shop-header">
+    <h1>Premium <span>Showroom</span></h1>
+    <p>Discover the future of driving.</p>
+  </header>
+
+  <section class="product-grid">
+    <div class="car-card" *ngFor="let car of inventory">
+      <div class="image-wrapper">
+        <img [src]="car.imageUrl" [alt]="car.name" />
+        <div class="overlay">
+          <button class="view-btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="card-title">
+          <h4>{{ car.name }}</h4>
+          <span class="year-tag">{{ car.year }}</span>
+        </div>
+
+        <p class="specs">{{ car.transmission }} • {{ car.fuelType }}</p>
+
+        <div class="card-footer">
+          <span class="price">{{ car.price | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+          <button class="buy-btn">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
